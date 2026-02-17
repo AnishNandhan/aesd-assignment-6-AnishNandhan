@@ -1,0 +1,23 @@
+From 2cdced1194e05ba104cab47cd255922cded13813 Mon Sep 17 00:00:00 2001
+From: AnishNandhan <anishnandhan03@gmail.com>
+Date: Tue, 17 Feb 2026 13:31:41 +0530
+Subject: [PATCH] include only scull and misc-modules
+
+---
+ Makefile | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7b08c49..c4f2e2e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,5 @@
+ 
+-SUBDIRS =  misc-progs misc-modules \
+-           skull scull scullc scullp lddbus sculld scullv shortprint simple tty \
+-	   pci usb\
+-	   sbull snull short
++SUBDIRS =  misc-modules scull
+ 
+ all: subdirs
+ 

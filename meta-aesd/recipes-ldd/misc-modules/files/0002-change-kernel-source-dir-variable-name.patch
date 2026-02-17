@@ -1,0 +1,46 @@
+From 03c4f2ac4526ebf7023a0427ee37dd1c2033c69e Mon Sep 17 00:00:00 2001
+From: AnishNandhan <anishnandhan03@gmail.com>
+Date: Tue, 17 Feb 2026 14:58:34 +0530
+Subject: [PATCH] change kernel source dir variable name
+
+
+include only misc-modules
+---
+ Makefile              | 2 +-
+ misc-modules/Makefile | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index c4f2e2e..0966da5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ 
+-SUBDIRS =  misc-modules scull
++SUBDIRS =  misc-modules
+ 
+ all: subdirs
+ 
+diff --git a/misc-modules/Makefile b/misc-modules/Makefile
+index f4e6e34..97b61e2 100644
+--- a/misc-modules/Makefile
++++ b/misc-modules/Makefile
+@@ -12,15 +12,15 @@ ifeq ($(KERNELRELEASE),)
+ 
+     # Assume the source tree is where the running kernel was built
+     # You should set KERNELDIR in the environment if it's elsewhere
+-    KERNELDIR ?= /lib/modules/$(shell uname -r)/build
++    KERNEL_SRC ?= /lib/modules/$(shell uname -r)/build
+     # The current directory is passed to sub-makes as argument
+     PWD := $(shell pwd)
+ 
+ modules:
+-	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
++	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) modules
+ 
+ modules_install:
+-	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules_install
++	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) modules_install
+ 
+ clean:
+ 	rm -rf *.o *~ core .depend .*.cmd *.ko *.mod.c .tmp_versions *.mod modules.order *.symvers

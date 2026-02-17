@@ -1,0 +1,41 @@
+From e13394230ecf412be821845a09ccbb64c6c880bf Mon Sep 17 00:00:00 2001
+From: AnishNandhan <anishnandhan03@gmail.com>
+Date: Tue, 17 Feb 2026 14:51:06 +0530
+Subject: [PATCH] change kernel src variable name
+
+
+include only scull
+---
+ Makefile       | 2 +-
+ scull/Makefile | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index c4f2e2e..7d1bf95 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ 
+-SUBDIRS =  misc-modules scull
++SUBDIRS = scull
+ 
+ all: subdirs
+ 
+diff --git a/scull/Makefile b/scull/Makefile
+index 3f6c8d0..4ba0fc3 100644
+--- a/scull/Makefile
++++ b/scull/Makefile
+@@ -23,11 +23,11 @@ obj-m	:= scull.o
+ 
+ else
+ 
+-KERNELDIR ?= /lib/modules/$(shell uname -r)/build
++KERNEL_SRC ?= /lib/modules/$(shell uname -r)/build
+ PWD       := $(shell pwd)
+ 
+ modules:
+-	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
++	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) modules
+ 
+ endif
+ 
